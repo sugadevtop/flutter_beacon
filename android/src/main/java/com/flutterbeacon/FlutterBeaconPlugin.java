@@ -83,7 +83,7 @@ public class FlutterBeaconPlugin implements MethodCallHandler,
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
-    if (call.method.equals("initialize2")) {
+    if (call.method.equals("initialize")) {
       this.flutterResult = result;
       initialize();
     } else {
