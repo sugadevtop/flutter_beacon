@@ -45,6 +45,9 @@ public class FlutterBeaconPlugin implements MethodCallHandler,
 
   private static final int REQUEST_CODE_LOCATION = 1234;
   private static final int REQUEST_CODE_BLUETOOTH = 5678;
+  private static final int SmartCoatV5_LAYOUT = "x,m:0-2=990405,i:20-25,d:2-2,d:3-3,d:4-4,d:5-5,d:6-6,d:7-7,d:8-8,d:9-9,d:10-10,d:11-11,d:12-12,d:13-13,d:14-14,d:15-15,d:16-16,d:17-17,d:18-18,d:19-19,d:20-20,d:21-21,d:22-22,d:23-23,d:24-24,d:25-25"
+  private static final int SmartCoatV6_LAYOUT = "x,m:0-2=990490,i:2-19,d:2-2,d:3-3,d:4-4,d:5-5,d:6-6,d:7-7,d:8-8,d:9-9,d:10-10,d:11-11,d:12-12,d:13-13,d:14-14,d:15-15,d:16-16,d:17-17,d:18-18,d:19-19"
+
 
   private final Registrar registrar;
   private BeaconManager beaconManager;
@@ -91,9 +94,16 @@ public class FlutterBeaconPlugin implements MethodCallHandler,
   private void initialize() {
     this.beaconManager = BeaconManager.getInstanceForApplication(registrar.activity());
 
-    BeaconParser iBeaconLayout = new BeaconParser().setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24");
+
+    BeaconParser v5Parser = new BeaconParser().setBeaconLayout(SmartCoatV5_LAYOUT);
+    v3Parser.setHardwareAssistManufacturerCodes(new int[]{1177});
+
+    BeaconParser v6Parser = new BeaconParser().setBeaconLayout(SmartCoatV6_LAYOUT);
+    v3Parser.setHardwareAssistManufacturerCodes(new int[]{1177});
+
     beaconManager.getBeaconParsers().clear();
-    beaconManager.getBeaconParsers().add(iBeaconLayout);
+    beaconManager.getBeaconParsers().add(v5Parser);
+    beaconManager.getBeaconParsers().add(v6Parser);
 
     if (checkLocationServicesPermission() && checkBluetoothPoweredOn()) {
       if (this.flutterResult != null) {
