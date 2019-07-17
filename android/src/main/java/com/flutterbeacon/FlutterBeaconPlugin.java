@@ -96,10 +96,10 @@ public class FlutterBeaconPlugin implements MethodCallHandler,
 
 
     BeaconParser v5Parser = new BeaconParser().setBeaconLayout(SmartCoatV5_LAYOUT);
-    v3Parser.setHardwareAssistManufacturerCodes(new int[]{1177});
+    v5Parser.setHardwareAssistManufacturerCodes(new int[]{1177});
 
     BeaconParser v6Parser = new BeaconParser().setBeaconLayout(SmartCoatV6_LAYOUT);
-    v3Parser.setHardwareAssistManufacturerCodes(new int[]{1177});
+    v6Parser.setHardwareAssistManufacturerCodes(new int[]{1177});
 
     beaconManager.getBeaconParsers().clear();
     beaconManager.getBeaconParsers().add(v5Parser);
