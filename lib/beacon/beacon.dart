@@ -34,6 +34,8 @@ class Beacon {
   /// The accuracy of distance of beacon in meter.
   final double accuracy;
 
+  final String rawData;
+
   /// The proximity of beacon.
   final Proximity _proximity;
 
@@ -44,6 +46,7 @@ class Beacon {
       this.minor,
       this.rssi,
       this.txPower,
+      this.rawData,
       this.accuracy})
       : this._proximity = null;
 
@@ -54,6 +57,7 @@ class Beacon {
         major = json['major'],
         minor = json['minor'],
         rssi = _parseInt(json['rssi']),
+        rawData = json('rawData'),
         txPower = _parseInt(json['txPower']),
         accuracy = _parseDouble(json['accuracy']),
         _proximity = _parseProximity(json['proximity']);
@@ -125,6 +129,7 @@ class Beacon {
       'proximityUUID': proximityUUID,
       'major': major,
       'minor': minor,
+      'rawData': rawData,
       'rssi': rssi ?? -1,
       'accuracy': accuracy,
       'proximity': proximity.toString()
