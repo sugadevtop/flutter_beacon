@@ -28,7 +28,7 @@ class FlutterBeaconUtils {
     Map<String, Object> map = new HashMap<>();
 
     map.put("proximityUUID", beacon.getId1().toString().toUpperCase());
-    map.put("major", beacon.getId2().toInt());
+//    map.put("major", beacon.getId2().toInt());
     map.put("minor", beacon.getId3().toInt());
     map.put("rssi", beacon.getRssi());
     map.put("txPower", beacon.getTxPower());
