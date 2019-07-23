@@ -34,7 +34,7 @@ class Beacon {
   /// The accuracy of distance of beacon in meter.
   final double accuracy;
 
-  final String rawData;
+  final List<int> rawData;
 
   /// The proximity of beacon.
   final Proximity _proximity;
@@ -57,7 +57,7 @@ class Beacon {
         major = json['major'],
         minor = json['minor'],
         rssi = _parseInt(json['rssi']),
-        rawData = json['rawData'],
+        rawData = _parseListInt(json['rawData']),
         txPower = _parseInt(json['txPower']),
         accuracy = _parseDouble(json['accuracy']),
         _proximity = _parseProximity(json['proximity']);
@@ -82,6 +82,21 @@ class Beacon {
     }
 
     return 0;
+  }
+
+  static List<int> _parseListInt (dynamic data) {
+    if (data is String) {
+      if (data.contains('[') && data.contains(']')) {
+        data = data.replaceAll('[', '');
+        data = data.replaceAll(']', '');
+        final listData = data.toString().split(',');
+        var list = List<int>();
+        listData.forEach((value) => {
+          list.add(int.parse(value))
+        });
+        return list;
+      } else return List<int>();
+    } else return List<int>();
   }
 
   /// Parsing dynamic proximity into enum [Proximity].
