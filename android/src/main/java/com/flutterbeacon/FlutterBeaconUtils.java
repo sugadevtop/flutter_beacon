@@ -30,7 +30,7 @@ class FlutterBeaconUtils {
     map.put("proximityUUID", beacon.getId1().toString().toUpperCase());
 //    map.put("major", beacon.getId2().toInt());
 //    map.put("minor", beacon.getId3().toInt());
-    map.put("rawData", beacon.getDataFields().toString());
+    map.put("rawData", "abc");
     map.put("rssi", beacon.getRssi());
     map.put("txPower", beacon.getTxPower());
     map.put("accuracy", String.format(Locale.US, "%.2f", beacon.getDistance()));
