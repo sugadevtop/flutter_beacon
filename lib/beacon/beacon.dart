@@ -57,7 +57,7 @@ class Beacon {
         major = json['major'],
         minor = json['minor'],
         rssi = _parseInt(json['rssi']),
-        rawData = json('rawData'),
+        rawData = json['rawData'],
         txPower = _parseInt(json['txPower']),
         accuracy = _parseDouble(json['accuracy']),
         _proximity = _parseProximity(json['proximity']);
