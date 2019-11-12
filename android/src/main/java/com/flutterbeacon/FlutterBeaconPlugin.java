@@ -98,7 +98,6 @@ public class FlutterBeaconPlugin implements MethodCallHandler,
 
     beaconManager.getBeaconParsers().clear();
     beaconManager.getBeaconParsers().add(v5Parser);
-    beaconManager.getBeaconParsers().add(v6Parser);
 
     if (checkLocationServicesPermission() && checkBluetoothPoweredOn()) {
       if (this.flutterResult != null) {
